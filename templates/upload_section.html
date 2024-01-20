@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Section</title>
+</head>
+<body>
+    <h1>Upload Section  {{id}}</h1>
+
+    <form action="{{ url_for('upload_section', id=id) }}" method="POST">
+        <!-- Add input fields for section data -->
+        <label for="secName">Section Name:</label>
+        <input type="text" id="secName" name="sec_name" required>
+
+        <label for="secDescription">Section Description:</label>
+        <textarea id="secDescription" name="sec_description" required></textarea>
+
+        <button type="submit">Upload Section</button>
+    </form>
+
+</body>
+</html>

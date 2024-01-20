@@ -16,6 +16,16 @@
         <p>{{user.password}}</p>
         {% endfor %}
         {{users}}
+
+        {{data}}
+        {% for sec in data %}
+        <p>{{sec.sec_name}}
+        {{sec.sec_description}},{{sec.owner.username}}|     
+        <a href="{{ url_for('update_section', sec_id=sec.id) }}">update</a> 
+        <a href="{{ url_for('delete_section', sec_id=sec.id) }}">delete</a> 
+
+    </p>
+        {% endfor %}
           <p>{{email}} and {{passw}}</p>
     </div>
     

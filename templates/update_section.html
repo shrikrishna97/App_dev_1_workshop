@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Section</title>
+</head>
+<body>
+    <h1>Update Section {{id}}</h1>
+
+    <form action="{{ url_for('update_section', sec_id=id) }}" method="POST">
+        <!-- Add input fields for updating section data -->
+        <label for="secName">New Section Name:</label>
+        <input type="text" id="secName" name="sec_name">
+
+
+        <button type="submit">Update Section</button>
+    </form>
+</body>
+</html>
