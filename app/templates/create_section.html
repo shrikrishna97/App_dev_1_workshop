@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Section</title>
+    
+    <!-- Bootstrap 5 CDN links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">LSM App</a>
+    
+    <!-- Logout Button -->
+    <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="GET">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Create Section</h1>
+
+    <!-- Form for Creating Section -->
+    <form action="{{ url_for('create_section') }}" method="POST">
+        <div class="mb-3">
+            <label for="sec_name" class="form-label">Section Name</label>
+            <input type="text" class="form-control" id="sec_name" name="sec_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="sec_description" class="form-label">Section Description</label>
+            <textarea class="form-control" id="sec_description" name="sec_description" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Section</button>
+    </form>
+
+    <!-- Back to Dashboard Link -->
+    <a href="{{ url_for('dash') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <!-- Bootstrap 5 CDN links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Your App Name</a>
+    
+    <!-- Search Bar -->
+    <form class="d-flex" action="{{ url_for('search') }}" method="POST">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_term" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    
+    <!-- Logout Button -->
+    <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="GET">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Welcome to the Dashboard</h1>
+
+    <!-- Create Section Form -->
+    <h2>Create Section:</h2>
+    <form action="{{ url_for('create_section') }}" method="POST">
+        <div class="mb-3">
+            <label for="sec_name" class="form-label">Section Name</label>
+            <input type="text" class="form-control" id="sec_name" name="sec_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="sec_description" class="form-label">Section Description</label>
+            <textarea class="form-control" id="sec_description" name="sec_description" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Section</button>
+    </form>
+
+    <!-- Update Section Form -->
+    <h2>Update Section:</h2>
+    <form action="{{ url_for('update_section', sec_id=section.id) }}" method="POST">
+        <div class="mb-3">
+            <label for="sec_name" class="form-label">Section Name</label>
+            <input type="text" class="form-control" id="sec_name" name="sec_name" value="{{ section.sec_name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="sec_description" class="form-label">Section Description</label>
+            <textarea class="form-control" id="sec_description" name="sec_description" rows="3" required>{{ section.sec_description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-warning">Update Section</button>
+    </form>
+
+    <!-- Delete Section Form -->
+    <h2>Delete Section:</h2>
+    <form action="{{ url_for('delete_section', sec_id=section.id) }}" method="POST">
+        <p>Are you sure you want to delete this section?</p>
+        <button type="submit" class="btn btn-danger">Delete Section</button>
+    </form>
+
+    <!-- Grant Librarian Permission Form -->
+    <h2>Grant Librarian Permission:</h2>
+    <form action="{{ url_for('grant_librarian_permission') }}" method="POST">
+        <div class="mb-3">
+            <label for="user_id" class="form-label">User ID</label>
+            <input type="text" class="form-control" id="user_id" name="user_id" required>
+        </div>
+        <button type="submit" class="btn btn-success">Grant Librarian Permission</button>
+    </form>
+</div>
+
+</body>
+</html>
